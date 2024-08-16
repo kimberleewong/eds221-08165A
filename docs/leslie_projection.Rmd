@@ -1,6 +1,8 @@
 ---
 title: "The Leslie Matrix - revisited"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -43,16 +45,16 @@ Add line-by-line comments wheres prompted in the code below, explaining what eac
 # ------ WHAT HAPPENS HERE? ------ #
 # ------ comment line-by-line ---- #
 
-# The line below...
+# The line below creates a vector of nine values from 0 to 8
 time_yr <- seq(from = 0, to = 8, by = 1)
 
-# The line below...
+# The line below creates an empty matrix of four by four
 proj_year <- matrix(ncol = length(fish_year0), nrow = length(time_yr))
 
-# The line below...
+# The line below fills in first row of matrix w/ initial starting pop
 proj_year[1, ] <- fish_year0
 
-# The for loop below...
+# The for loop below uses dot product 
 for (i in 2:length(time_yr)) {
   proj_year[i,] <- fish_leslie %*% proj_year[i-1,]
 }
